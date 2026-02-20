@@ -145,14 +145,24 @@ calcular_dist_ocupacao <- function(survey_list) {
   purrr::map_dfr(anos_alvo, function(ano) {
     sv <- survey_list[[as.character(ano)]]
     
-    sv |>
-      filter(!is.na(cod_ocupacao), !is.na(sexo)) |>
-      group_by(sexo, cod_ocupacao) |>
-      summarise(n = survey_total(vartype = "ci"), .groups = "drop") |>
-      group_by(cod_ocupacao) |>
-      mutate(pct = n / sum(n) * 100) |>
-      ungroup() |>
-      mutate(ano = ano)
+    purrr::map_dfr(
+      list(
+        list(nome = "Brasil",   filtro = quote(BR == 1)),
+        list(nome = "Nordeste", filtro = quote(NE == 1)),
+        list(nome = "Ceará",    filtro = quote(CE == 1))
+      ),
+      function(recorte) {
+        sv |>
+          filter(eval(recorte[[2]])) |>
+          filter(!is.na(cod_ocupacao), !is.na(sexo)) |>
+          group_by(sexo, cod_ocupacao) |>
+          summarise(n = survey_total(vartype = "ci"), .groups = "drop") |>
+          group_by(sexo) |>
+          mutate(pct = n / sum(n) * 100) |>
+          ungroup() |>
+          mutate(regiao = recorte$nome, ano = ano)
+      }
+    )
   })
 }
 
@@ -192,16 +202,23 @@ calcular_gerencia_setor <- function(survey_list) {
   purrr::map_dfr(anos_alvo, function(ano) {
     sv <- survey_list[[as.character(ano)]]
     
-    sv |>
-      filter(cod_ocupacao == "diretores e gerentes",
-             !is.na(setor_economia), !is.na(sexo)) |>
-      group_by(sexo, setor_economia) |>
-      summarise(n = survey_total(vartype = "ci"), .groups = "drop") |>
-      group_by(setor_economia) |>
-      mutate(pct = n / sum(n) * 100) |>
-      ungroup() |>
-      mutate(ano = ano) |> 
-      print(n=22)
+    purrr::map_dfr(
+      list(
+        list(nome = "Brasil",   filtro = quote(BR == 1)),
+        list(nome = "Nordeste", filtro = quote(NE == 1)),
+        list(nome = "Ceará",    filtro = quote(CE == 1))
+      ),
+      function(recorte) {
+        sv |>
+          filter(cod_ocupacao == "diretores e gerentes",
+                 !is.na(setor_economia), !is.na(sexo)) |>
+          group_by(sexo, setor_economia) |>
+          summarise(n = survey_total(vartype = "ci"), .groups = "drop") |>
+          group_by(setor_economia) |>
+          mutate(pct = n / sum(n) * 100) |>
+          ungroup() |>
+          mutate(regiao = recorte$nome, ano = ano)
+      })
   })
 }
 
