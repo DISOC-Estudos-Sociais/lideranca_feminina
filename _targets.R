@@ -76,7 +76,7 @@ list(
   tar_target(
     export_tab_ocupacao,
     {
-      readr::write_csv(tab_dist_ocupacao, "outputs/tab1_dist_ocupacao.csv")
+      readr::write_csv2(tab_dist_ocupacao, "outputs/tab1_dist_ocupacao.csv")
       "outputs/tab1_dist_ocupacao.csv"
     },
     format = "file"
@@ -85,7 +85,7 @@ list(
   tar_target(
     export_tab_gerencia,
     {
-      readr::write_csv(tab_gerencia_setor, "outputs/tab3_gerencia_setor.csv")
+      readr::write_csv2(tab_gerencia_setor, "outputs/tab3_gerencia_setor.csv")
       "outputs/tab3_gerencia_setor.csv"
     },
     format = "file"

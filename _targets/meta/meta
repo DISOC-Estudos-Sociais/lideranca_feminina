@@ -14,11 +14,12 @@ survey_2025|stem|c2c508a888b9d9cb|07c61600f27b5983|d6fb5394a8d1b42e|-230769863||
 survey_list|stem|5a7cf499d76cda24|a99b03e8e99022e2|f3f3958302e24990|269160542||t20504.6904001419s|s845425395b|845425395|rds|local|vector|||0||
 tab_lideranca|stem|04b69a0c6648204c|d7aeb26e6925afea|2509baf61ed812dc|-1091995253||t20504.6913652062s|s475b|475|rds|local|vector|||75.06||
 plot_lideranca_mulheres|stem|8f947a5edc24d05d|eee1329820023132|dc66fcd41a27ba97|-212282568||t20504.693182836s|s348375b|348375|rds|local|vector|||0.08||
-export_tab_gerencia|stem|399bbd05b3061949|854d89f2f4a392ba|7c1945a14ec6da93|-2113134412|outputs/tab3_gerencia_setor.csv|t20504.6936015263s|s7142b|7142|file|local|vector|||0.25||
 export_plot_lideranca|stem|270d04dcb69a0acd|3a5243eef3778878|6741d66d703c7d5e|2070104105|outputs/fig2_lideranca_mulheres.png|t20504.6936447854s|s50443b|50443|file|local|vector|||3.53||
 tab_rendimentos|stem|ab85f25f288a5d27|45823aa4cb26918a|6d4f61deda372b40|323367077||t20504.7117129215s|s744b|744|rds|local|vector|||30.44||
 plot_rend_genero|stem|55d51c7977dbb323|71e4e0e7dac912f3|3118743948a1fa70|2005300640||t20504.7367111386s|s352237b|352237|rds|local|vector|||0.23||
 export_plot_rendimentos|stem|58859671bf911a30|da5f9725f9ce2529|e067ece192c93926|-950396210|outputs/fig4_rendimentos_genero.png|t20504.7367178555s|s74606b|74606|file|local|vector|||0.47||
+tab_gerencia_setor|stem|832495d7878de11e|057580748f81651f|bf79a9bc99c44b6d|703070070||t20504.7435185851s|s2650b|2650|rds|local|vector|||2.25||
+tab_dist_ocupacao|stem|bb80737fd2a1239b|753cf5f62be117f1|d9a64c9a75600b07|880829967||t20504.7442194422s|s2205b|2205|rds|local|vector|||49.71||
 anos_alvo|object|657d661debba9414
 variaveis|object|76728190b98e2c47
 plot_rendimentos|function|a5ed7cbfe4d524ed
@@ -30,6 +31,5 @@ calcular_rendimentos|function|1b1a603e6fae7e3e
 calcular_dist_ocupacao|function|61c4e46fe3778b01
 get_data_pnadc|function|6d0ee6f03c62eb6c
 baixar_e_processar|function|c08825da349d7b4e
-tab_gerencia_setor|stem|832495d7878de11e|057580748f81651f|bf79a9bc99c44b6d|703070070||t20504.7435185851s|s2650b|2650|rds|local|vector|||2.25||
-tab_dist_ocupacao|stem|bb80737fd2a1239b|753cf5f62be117f1|d9a64c9a75600b07|880829967||t20504.7442194422s|s2205b|2205|rds|local|vector|||49.71||
-export_tab_ocupacao|stem|719ce8c6aa498e4e|77211718ba5b8493|f17d2ba492e122d2|2035795945|outputs/tab1_dist_ocupacao.csv|t20504.7442342332s|s5944b|5944|file|local|vector|||1.16||
+export_tab_gerencia|stem|5851b70e78814f8c|1df129edd9a1f138|7c1945a14ec6da93|-2113134412|outputs/tab3_gerencia_setor.csv|t20504.7623788327s|s7227b|7227|file|local|vector|||0.22||
+export_tab_ocupacao|stem|495e3ec193028ceb|f0fae7d5e7a7b1ce|f17d2ba492e122d2|2035795945|outputs/tab1_dist_ocupacao.csv|t20504.7623796043s|s5825b|5825|file|local|vector|||0.01||
