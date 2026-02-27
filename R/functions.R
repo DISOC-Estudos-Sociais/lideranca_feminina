@@ -123,7 +123,13 @@ process_data <- function(design){
                                             V4010 %in% 7111:7549 ~ "construção, mecanicas e outros",
                                             V4010 %in% 8111:8350 ~ "instalações, maquinas e montadores",
                                             V4010 %in% 9111:9629 ~ "ocupações elementares",
-                                            V4010 %in% 0110:0512 ~ "forças armadas, policiais e bombeiros")))
+                                            V4010 %in% c("0000",
+                                                         "0110",
+                                                         "0210",
+                                                         "0411",
+                                                         "0412",
+                                                         "0511",
+                                                         "0512") ~ "forças armadas, policiais e bombeiros")))
 }
 
 # =============================================================================
@@ -153,7 +159,7 @@ calcular_dist_ocupacao <- function(survey_list) {
       ),
       function(recorte) {
         sv |>
-          filter(eval(recorte[[2]])) |>
+          filter(!!recorte$filtro) |>
           filter(!is.na(cod_ocupacao), !is.na(sexo)) |>
           group_by(sexo, cod_ocupacao) |>
           summarise(n = survey_total(vartype = "ci"), .groups = "drop") |>
@@ -180,7 +186,7 @@ calcular_lideranca_mulheres <- function(survey_list) {
       ),
       function(recorte) {
         sv |>
-          filter(eval(recorte[[2]])) |>
+          filter(!!recorte$filtro) |>
           filter(!is.na(cod_ocupacao), !is.na(sexo)) |>
           mutate(lideranca = cod_ocupacao == "diretores e gerentes") |>
           group_by(sexo, lideranca) |>
@@ -210,6 +216,7 @@ calcular_gerencia_setor <- function(survey_list) {
       ),
       function(recorte) {
         sv |>
+          filter(!!recorte$filtro) |> 
           filter(cod_ocupacao == "diretores e gerentes",
                  !is.na(setor_economia), !is.na(sexo)) |>
           group_by(sexo, setor_economia) |>
@@ -236,7 +243,7 @@ calcular_rendimentos <- function(survey_list) {
       ),
       function(recorte) {
         sv |>
-          filter(eval(recorte[[2]])) |>
+          filter(!!recorte$filtro) |>
           filter(cod_ocupacao == "diretores e gerentes") |> 
           filter(!is.na(sexo), !is.na(rendim_trabh)) |>
           group_by(sexo) |>
